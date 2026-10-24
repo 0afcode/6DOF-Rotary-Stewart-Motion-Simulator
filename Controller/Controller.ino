@@ -1,6 +1,6 @@
 #include <sstream>
 #include <Preferences.h>
-#include <Bounce2.h>
+#include "Bounce2.h"
 #include <BLEDevice.h>
 #include <BLEUtils.h>
 #include <BLEServer.h>  
@@ -10,7 +10,7 @@
 #include <EEPROM.h>
 #include "soc/timer_group_struct.h"
 #include "soc/timer_group_reg.h"
-#include <BLE2902.h>
+#include "BLE/BLE2902.h"
 #include <cstring>
 #include "freertos/FreeRTOS.h"
 #include "freertos/timers.h"
@@ -587,7 +587,7 @@ void processIncomingByte (const byte inByte)
         
         default:
           //buffer data
-          if (input_pos < (MAX_INPUT - 1))
+          if (input_pos < (MAX_SERIAL_INPUT - 1))
             input_line [input_pos++] = inByte;
           break;
     } 
